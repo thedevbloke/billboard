@@ -14,12 +14,15 @@
           <%= link_to "#{artist.name}", artist, class: "header" %>
         </div>
         <div class="extra content">
-          <div class="ui two buttons">
+          <div class="ui three buttons">
+            <div class="ui basic blue button">
+              <%= link_to 'Show', artist_path(artist) %>
+            </div>
             <div class="ui basic blue button">
               <%= link_to 'Edit', edit_artist_path(artist) %>
             </div>
             <div class="ui basic red button">
-              <%= link_to 'Destroy', artist, method: :delete, data: { confirm: 'Are you sure?' } %>
+              <%= link_to 'Destroy', artist_path(artist), method: :delete, data: { confirm: 'Are you sure?' } %>
             </div>
           </div>
         </div>

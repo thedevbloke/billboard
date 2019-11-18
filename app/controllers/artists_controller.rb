@@ -6,6 +6,7 @@ class ArtistsController < ApplicationController
   end
 
   def show
+    @artist.songs
   end
 
   def new 
@@ -15,7 +16,7 @@ class ArtistsController < ApplicationController
   def create
     @artist = Artist.new(artist_params)
     if @artist.save
-      redirect_to artist_path #sends you back to index
+      redirect_to artists_path
     else
       render :new
     end
@@ -24,9 +25,10 @@ class ArtistsController < ApplicationController
   def edit
   end
 
-  def update 
+  def update
+    # @artist = set_artist
     if @artist.update(artist_params)
-      redirect_to artist_path(@artist) #sends you back to show
+      redirect_to @artist #sends you back to show
     else 
       render :edit
     end
@@ -34,7 +36,7 @@ class ArtistsController < ApplicationController
 
   def destroy
     @artist.destroy
-    redirect_to artist_path
+    redirect_to artists_path
   end
 
   private
